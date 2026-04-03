@@ -1,8 +1,11 @@
 <?php
+
+include('./includes/config.inc.php');
+
 if(isset($_POST['felhasznalo']) && isset($_POST['jelszo']) && isset($_POST['vezeteknev']) && isset($_POST['utonev'])) {
     try {
         // Kapcsolódás
-        $dbh = new PDO('mysql:host=localhost;dbname=gyakorlat', 'root', '',
+        $dbh = new PDO("mysql:host={$adatbazis['host']};dbname={$adatbazis['dbname']}", $adatbazis['username'], $adatbazis['password'],
                         array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
         $dbh->query('SET NAMES utf8 COLLATE utf8_hungarian_ci');
         
