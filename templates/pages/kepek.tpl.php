@@ -14,11 +14,15 @@
 
     <?php if(isset($_SESSION['login'])): ?>
 
+        <?php if(isset($errormessage)) { ?>
+            <h2><?= $errormessage ?></h2>
+        <?php } ?>
+
         <div class="flex col gap-1">
             <h3>Kép feltöltése</h3>
-            <form class="flex col gap-1" method="POST" action="/includes/upload.image.inc.php">
-                <input type="file" accept="image/*" />
-                <button type="submit" class="w-mc">Képek feltöltése</button>
+            <form class="flex col gap-1" method="POST" action="feltoltes" enctype="multipart/form-data">
+                <input type="file" name="imageUpload" accept="image/*" />
+                <button type="submit" name="submit" class="w-mc">Képek feltöltése</button>
             </form>
         </div>
 
