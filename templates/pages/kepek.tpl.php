@@ -1,15 +1,25 @@
+<?php
+
+    include('./includes/config.inc.php');
+
+    $target_dir     = $uploads['target'];
+    $images         = glob($target_dir . '*.{jpg,jpeg,png,gif}', GLOB_BRACE);
+
+?>
+
 <h2>Képek</h2>
 <hr />
 
 <div class="flex row gap-1 w-fa">
 
     <div class="flex row wrap gallery-container"> 
-        <img src="/images/arc.jpg">
-        <img src="/images/arc.jpg">
-        <img src="/images/arc.jpg">
-        <img src="/images/arc.jpg">
-        <img src="/images/arc.jpg">
-        <img src="/images/arc.jpg">
+        
+        <?php foreach ($images as $image) : ?>
+    
+            <img src="<?= $image; ?>" />
+
+        <?php endforeach; ?>
+
     </div>
 
     <?php if(isset($_SESSION['login'])): ?>

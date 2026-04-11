@@ -2,7 +2,21 @@
 
 include('./includes/config.inc.php');
 
-$target_dir     = "images/uploads/";
+
+// UUID Generator
+function guidv4($data = null) {
+
+    $data = $data ?? random_bytes(16);
+    assert(strlen($data) == 16);
+
+    $data[6] = chr(ord($data[6]) & 0x0f | 0x40);
+    $data[8] = chr(ord($data[8]) & 0x3f | 0x80);
+
+    return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
+}
+
+
+$target_dir     = $uploads['target'];
 $target_file    = $target_dir . basename($_FILES["imageUpload"]["name"]);
 $uploadOk       = 1;
 $imageFileType  = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -26,9 +40,10 @@ if(isset($_POST["submit"])) {
 
 }
 
+$generatedFile = $target_dir . '' . guidv4() . "." . $imageFileType;
 
 // Duplikacio ellenorzese
-if (file_exists($target_file)) {
+if (file_exists($generatedFile)) {
 
   $errormessage = "Hiba: A feltöltött kép már létezik!";
   return;
@@ -37,7 +52,7 @@ if (file_exists($target_file)) {
 
 
 // Fajl meretenek ellenorzese
-if ($_FILES["imageUpload"]["size"] > 1000000) {
+if ($_FILES["imageUpload"]["size"] > $uploads['size']) {
 
     $errormessage = "Hiba: A kép mérete túl nagy!";
     return;
@@ -46,7 +61,7 @@ if ($_FILES["imageUpload"]["size"] > 1000000) {
 
 
 // Fajl kiterjesztesenek korlatozasa
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
+if(!in_array($imageFileType, $uploads['mimes'])) {
 
     $errormessage   = "Hiba: Nem támogatott fájl kiterjesztés! (Engedélyezett: jpg, jpeg, png, gif)";
     return;
@@ -55,7 +70,7 @@ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg
 
 
 // Kep feltoltese
-if (move_uploaded_file($_FILES["imageUpload"]["tmp_name"], $target_file)) {
+if (move_uploaded_file($_FILES["imageUpload"]["tmp_name"], $generatedFile)) {
 
     $successMessage = "Kép feltöltése sikeresen megtörtént!";
 
