@@ -27,3 +27,64 @@
     </fieldset>
 
 </form>
+
+<script>
+
+    /**
+     * Kapcsolat urlap adatainak ellenorzese, majd fetch api meghivasaval
+     * elkuldjuk az adatokat a backend fele.
+     */
+
+    document.getElementById("kapcsolat_form").addEventListener("submit", async (e) => {
+
+        e.preventDefault();
+
+        const teljesNev = document.getElementById('teljes_nev');
+        const szoveg    = document.getElementById('szoveg');
+        const errCon    = document.getElementById('errorMessageCon');
+
+        if (teljesNev.value < 1) {
+
+            errCon.textContent = "Teljes Név mező kitöltése kötelező!";
+            return;
+
+        }
+
+        if (szoveg.value < 1) {
+
+            errCon.textContent = "Szöveg mező kitöltése kötelező!";
+            return;
+
+        }
+
+        errCon.textContent = "";
+
+        const kapcsoladAdat = {
+            nev     : teljesNev.value,
+            szoveg  : szoveg.value
+        }
+
+
+        await fetch("/logicals/kapcsolat.php", {
+            method  : "POST",
+            headers : {"Content-Type": "application/json"},
+            body    : JSON.stringify(kapcsoladAdat)
+        })
+        .then(res => res.json())
+        .then(data => {
+
+            if (data['error']) {
+
+                errCon.textContent = data['error'];
+                return;
+
+            }
+
+            window.location.href = "/";            
+
+        })
+
+
+    })
+
+</script>
