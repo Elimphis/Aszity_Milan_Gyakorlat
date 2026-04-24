@@ -124,3 +124,18 @@ button {
     object-fit: cover;
 
 }
+
+input, textarea {
+
+    width: -moz-available;
+    width: -webkit-fill-available;
+    border-radius: .3rem;
+    padding: .5rem 1rem;
+
+    border: 1px solid #666;
+
+    max-width: 100% !important;
+    overflow: hidden;
+    resize: none;
+
+}
