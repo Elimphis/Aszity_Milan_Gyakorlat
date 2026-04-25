@@ -22,8 +22,10 @@
 
 .w-fa {
     width: -webkit-fill-available;
-    width: -moz-webkit-fill-available;
+    width: -moz-available;
 }
+
+.text-center { text-align: center; }
 
 .w-fc {
     width: fit-content;

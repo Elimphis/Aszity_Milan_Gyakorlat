@@ -23,6 +23,7 @@ $oldalak = array(
     'feltoltes' => array('fajl' => 'feltoltes', 'szoveg' => '', 'menun' => array(0,0)),
 
 	'kapcsolat' => array('fajl' => 'kapcsolat', 'szoveg' => 'Kapcsolat', 'menun' => array(1,1)),
+    'uzenetek'  => array('fajl' => 'uzenetek', 'szoveg' => 'Üzenetek', 'menun' => array(0,1)),
     'crud'      => array('fajl' => 'crud', 'szoveg' => 'CRUD', 'menun' => array(1,1)),
     
     'belepes' => array('fajl' => 'belepes', 'szoveg' => 'Belépés', 'menun' => array(1,0)),
