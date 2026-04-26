@@ -1,18 +1,31 @@
 <?php
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 include(__DIR__ . '/../includes/config.inc.php');
 
 $method = $_SERVER['REQUEST_METHOD']; if ($method !== "POST") return;
 $data   = json_decode(file_get_contents("php://input"), true) ?? $_POST;
-
+$nev    = null;
 
 // Adatok validalasa
-    if (!isset($data['nev'])) {
+    // if (!isset($data['nev'])) {
         
-        echo json_encode(['error' => "Teljes Név mező kitöltése kötelező!"]);
-        return;
+    //     echo json_encode(['error' => "Teljes Név mező kitöltése kötelező!"]);
+    //     return;
+
+    // }
+
+    if (isset($_SESSION['login'])) {
+
+        $nev = $_SESSION['csn'] . ' ' . $_SESSION['un'];
 
     }
+
+    else { $nev = "Vendég"; }
+
 
     if (!isset($data['szoveg'])) {
         
@@ -45,7 +58,7 @@ $data   = json_decode(file_get_contents("php://input"), true) ?? $_POST;
             (:nev, :szoveg)
         ");
 
-        if($stmt->execute(array(':nev' => $data['szoveg'], ':szoveg' => $data['szoveg']))) {
+        if($stmt->execute(array(':nev' => $nev, ':szoveg' => $data['szoveg']))) {
             
             echo json_encode(['success' => true]);
             return;

@@ -6,10 +6,10 @@
             <h3>Vegye fel velünk a kapcsolatot!</h3>
         </legend><br />
 
-        <div>
+        <!-- <div>
             <label for="teljes_nev">Teljes név</label><br />
             <input type="text" name="teljes_nev" id="teljes_nev" placeholder="Adja meg a teljes nevét" />
-        </div><br />
+        </div><br /> -->
 
         <div>
             <label for="szoveg">Teljes név</label><br />
@@ -39,16 +39,16 @@
 
         e.preventDefault();
 
-        const teljesNev = document.getElementById('teljes_nev');
+        // const teljesNev = document.getElementById('teljes_nev');
         const szoveg    = document.getElementById('szoveg');
         const errCon    = document.getElementById('errorMessageCon');
 
-        if (teljesNev.value < 1) {
+        // if (teljesNev.value < 1) {
 
-            errCon.textContent = "Teljes Név mező kitöltése kötelező!";
-            return;
+        //     errCon.textContent = "Teljes Név mező kitöltése kötelező!";
+        //     return;
 
-        }
+        // }
 
         if (szoveg.value < 1) {
 
@@ -60,7 +60,7 @@
         errCon.textContent = "";
 
         const kapcsoladAdat = {
-            nev     : teljesNev.value,
+            // nev     : teljesNev.value,
             szoveg  : szoveg.value
         }
 
