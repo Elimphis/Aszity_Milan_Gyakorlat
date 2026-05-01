@@ -31,7 +31,7 @@ include(__DIR__ . '/../../logicals/crud.php');
                 <td><?= htmlspecialchars($data['hossz']) ?></td>
                 <td>
                     <div class="flex row items-center gap-1">
-                        <button class="button primary">Szerkesztés</button>
+                        <a href="/editfilm?id=<?= $data['id']; ?>" class="button primary">Szerkesztés</a>
                         <button class="button danger">Törlés</button>
                     </div>
                 </td>
