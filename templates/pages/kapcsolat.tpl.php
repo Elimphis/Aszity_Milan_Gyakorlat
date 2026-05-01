@@ -12,7 +12,7 @@
         </div><br /> -->
 
         <div>
-            <label for="szoveg">Teljes név</label><br />
+            <label for="szoveg">Szöveg</label><br />
             <textarea id="szoveg" name="szoveg" placeholder="Írja le üzenetét" rows="8" cols="64"></textarea>
         </div><br />
 
