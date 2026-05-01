@@ -32,7 +32,13 @@ include(__DIR__ . '/../../logicals/crud.php');
                 <td>
                     <div class="flex row items-center gap-1">
                         <a href="/editfilm?id=<?= $data['id']; ?>" class="button primary">Szerkesztés</a>
-                        <button class="button danger">Törlés</button>
+                        <form method="POST" action="crud" enctype="multipart/form-data">
+
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="id" value="<?= $data['id'] ?? '' ?>">
+                            <button class="button danger">Törlés</button>
+
+                        </form>
                     </div>
                 </td>
             </tr>

@@ -153,6 +153,43 @@ switch ($method) {
 
     case 'DELETE':
 
+        $raw  = file_get_contents("php://input");
+        $json = json_decode($raw, true);
+        $data = is_array($json) ? $json : $_POST;
+
+        $id    = $data['id'] ?? null;
+
+        if (!$id) {
+            $response = ['error' => 'Hiányzó adatok'];
+            return;
+        }
+
+        try {
+
+            $stmt = $dbh->prepare("
+                DELETE FROM filmek WHERE id = :id
+            ");
+
+            if ($stmt->execute([
+                ':id'    => $id
+            ])) {
+
+                header('Location: /crud');
+                exit;
+
+            } else {
+                $response = ['error' => "Hiba történt a folyamat közben!"];
+                return;
+            }
+
+        }
+        catch (PDOException $e) {
+
+            $response = ['error' => "Hiba történt a folyamat közben: " . $e->getMessage()];
+            return;
+
+        }  
+
     break;
 
     default:
