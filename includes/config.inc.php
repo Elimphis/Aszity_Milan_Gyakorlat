@@ -24,7 +24,9 @@ $oldalak = array(
 
 	'kapcsolat' => array('fajl' => 'kapcsolat', 'szoveg' => 'Kapcsolat', 'menun' => array(1,1)),
     'uzenetek'  => array('fajl' => 'uzenetek', 'szoveg' => 'Üzenetek', 'menun' => array(0,1)),
-    'crud'      => array('fajl' => 'crud', 'szoveg' => 'CRUD', 'menun' => array(1,1)),
+
+    'crud'       => array('fajl' => 'crud', 'szoveg' => 'CRUD', 'menun' => array(1,1)),
+    'createfilm' => array('fajl' => 'createfilm', 'szoveg' => 'CRUD2', 'menun' => array(0,0)),
     
     'belepes' => array('fajl' => 'belepes', 'szoveg' => 'Belépés', 'menun' => array(1,0)),
     'belep'   => array('fajl' => 'belep', 'szoveg' => '', 'menun' => array(0,0)),

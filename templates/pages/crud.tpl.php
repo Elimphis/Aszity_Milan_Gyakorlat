@@ -4,7 +4,7 @@ include(__DIR__ . '/../../logicals/crud.php');
 
 ?>
 
-<button class="button primary" style="margin-bottom: 2rem;">Film felvétele</button>
+<a id="add_film" class="button primary flex w-fc" style="margin-bottom: 2rem;" href="/createfilm">Film felvétele</a>
 
 <table class="w-fa text-center" id="crud-table">
     <tr>
@@ -14,10 +14,10 @@ include(__DIR__ . '/../../logicals/crud.php');
         <th>Hossz</th>
         <th></th>
     </tr>
-    <?php if (!isset($response) || isset($response['error'])) : ?>
+    <?php if (empty($response) || isset($response['error'])) : ?>
         <tr>
-            <td colspan="4">
-                <?= $response['error']; ?>
+            <td colspan="5">
+                <?= htmlspecialchars($response['error'] ?? 'Nincs adat') ?>
             </td>
         </tr>
     <?php else : ?>
@@ -25,10 +25,10 @@ include(__DIR__ . '/../../logicals/crud.php');
         <?php foreach($response['data'] as $data) : ?>
 
             <tr>
-                <td><?= $data['id'] ?></td>
-                <td><?= $data['cim'] ?></td>
-                <td><?= $data['ev'] ?></td>
-                <td><?= $data['hossz'] ?></td>
+                <td><?= htmlspecialchars($data['id']) ?></td>
+                <td><?= htmlspecialchars($data['cim']) ?></td>
+                <td><?= htmlspecialchars($data['ev']) ?></td>
+                <td><?= htmlspecialchars($data['hossz']) ?></td>
                 <td>
                     <div class="flex row items-center gap-1">
                         <button class="button primary">Szerkesztés</button>
@@ -41,9 +41,3 @@ include(__DIR__ . '/../../logicals/crud.php');
 
     <?php endif; ?>
 </table>
-
-<script>
-
-    
-
-</script>

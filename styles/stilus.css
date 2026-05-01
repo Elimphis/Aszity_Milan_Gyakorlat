@@ -1,3 +1,5 @@
+.hidden { display: none; }
+
 .flex {
     display: flex;
 }
@@ -112,7 +114,7 @@ footer {
     background-color: #CC99FF;
 }
 
-button {
+button, .button {
     padding: .5rem 1rem;
     border-radius: .4rem;
     cursor: pointer;
