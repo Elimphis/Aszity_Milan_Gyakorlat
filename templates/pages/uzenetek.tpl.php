@@ -38,15 +38,3 @@ include(__DIR__ . '/../../logicals/uzenetek.php');
 
     <?php endif; ?>
 </table>
-
-<script>
-
-    // fetch("/logicals/uzenetek.php")
-    // .then(res => res.text())
-    // .then(data => {
-
-    //     console.log(data)           
-
-    // })
-
-</script>

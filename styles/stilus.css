@@ -119,6 +119,18 @@ button {
     font-size: 1rem;
 }
 
+.button.primary {
+    background-color: #3a68c4;
+    color: #FFF;
+    border-color: transparent;
+}
+
+.button.danger {
+    background-color: #c43a3a;
+    color: #FFF;
+    border-color: transparent;
+}
+
 .gallery-container img {
 
     width: 25%;
@@ -139,5 +151,14 @@ input, textarea {
     max-width: 100% !important;
     overflow: hidden;
     resize: none;
+
+}
+
+table { border-collapse: collapse; }
+
+table tr td {
+    
+    border-bottom: 1px solid #aaa;
+    padding: .75rem;
 
 }
