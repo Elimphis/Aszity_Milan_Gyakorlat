@@ -29,7 +29,7 @@ $oldalak = array(
     'createfilm' => array('fajl' => 'createfilm', 'szoveg' => '', 'menun' => array(0,0)),
     'editfilm'   => array('fajl' => 'editfilm', 'szoveg' => '', 'menun' => array(0,0)),
     
-    'belepes' => array('fajl' => 'belepes', 'szoveg' => 'Belépés', 'menun' => array(1,0)),
+    'belepes' => array('fajl' => 'belepes', 'szoveg' => 'Bejelentkezés', 'menun' => array(1,0)),
     'belep'   => array('fajl' => 'belep', 'szoveg' => '', 'menun' => array(0,0)),
 
     'kilepes'    => array('fajl' => 'kilepes', 'szoveg' => 'Kilépés', 'menun' => array(0,1)),
